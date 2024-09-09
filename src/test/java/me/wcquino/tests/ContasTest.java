@@ -1,10 +1,8 @@
 package me.wcquino.tests;
 
 import me.wcquino.core.BaseTest;
+import me.wcquino.pojos.Contas;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
@@ -24,46 +22,46 @@ public class ContasTest extends BaseTest {
 
     @Test
     public void deveIncluirUmaContaComSucesso() {
-        Map<String, String> accountData = new HashMap<>();
-        accountData.put("nome", "TestesNew");
+        Contas account = new Contas();
+        account.setName("TestesNew");
 
         given()
             .header("Authorization", "JWT " + getTokenLogin())
-            .body(accountData)
+            .body(account)
         .when()
             .post("/contas")
         .then()
             .statusCode(201)
             .body("id", is(notNullValue()))
-            .body("nome", is("TestesNew"))
+            .body("nome", is(account.getName()))
             .body("visivel", is(true));
     }
 
     @Test
     public void deveAlterarUmaContaComSucesso() {
-        Map<String, String> accountData = new HashMap<>();
-        accountData.put("nome", "Testes2");
+        Contas account = new Contas();
+        account.setName("Testes2");
 
         given()
             .header("Authorization", "JWT " + getTokenLogin())
-            .body(accountData)
+            .body(account)
         .when()
             .put("/contas/2244037")
         .then()
             .statusCode(200)
             .body("id", is(notNullValue()))
-            .body("nome", is("Testes2"))
+            .body("nome", is(account.getName()))
             .body("visivel", is(true));;
     }
 
     @Test
     public void naoDeveInserirContaComMesmoNome() {
-        Map<String, String> accountData = new HashMap<>();
-        accountData.put("nome", "Testes");
+        Contas account = new Contas();
+        account.setName("Testes");
 
         given()
             .header("Authorization", "JWT " + getTokenLogin())
-            .body(accountData)
+            .body(account)
         .when()
             .post("/contas")
         .then()

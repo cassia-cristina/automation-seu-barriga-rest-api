@@ -1,10 +1,11 @@
-# Desafio API
+# Projeto de Automação API Rest
 
-Projeto de automação API Rest com Rest Assured
+Projeto final do curso Testando API Rest com REST-assured (com Wagner Costa)
 
 ##  Requisitos
-* Java 11+ JDK deve estar instalado
+* Java 11+ JDK
 * Maven
+* Plugin Lombok
 
 ## Como executar a aplicação
 

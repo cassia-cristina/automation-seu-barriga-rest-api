@@ -2,7 +2,7 @@ package me.wcquino.core;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources("file:src/main/resources/application.properties")
+@Config.Sources("file:src/test/resources/application.properties")
 public interface Properties extends Config {
     @Key("base.uri")
     String baseURI();
