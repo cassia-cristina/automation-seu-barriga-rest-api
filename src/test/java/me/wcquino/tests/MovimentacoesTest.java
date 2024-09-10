@@ -15,6 +15,7 @@ public class MovimentacoesTest extends BaseTest {
         movimentacoes.setType("REC");
         movimentacoes.setDescription("Movimentação Teste");
         movimentacoes.setInvolved("Interessado");
+        movimentacoes.setTransactionDate(DateTimeUtil.getCurrentDate());
         movimentacoes.setValue(100.99f);
         movimentacoes.setStatus(false);
         movimentacoes.setAccountId(2244037);
