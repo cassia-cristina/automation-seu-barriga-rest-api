@@ -12,5 +12,5 @@ Projeto final do curso Testando API Rest com REST-assured (com Wagner Costa)
 Na raiz do projeto, através de seu Prompt de Commando/Terminal/Console execute o comando:
 
 ```bash
-mvn clean test
+mvn clean install
 ```
