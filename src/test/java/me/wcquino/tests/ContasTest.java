@@ -23,7 +23,7 @@ public class ContasTest extends BaseTest {
     @Test
     public void deveIncluirUmaContaComSucesso() {
         Contas account = new Contas();
-        account.setName("TestesNew");
+        account.setName("New Account");
 
         given()
             .header("Authorization", "JWT " + getTokenLogin())
@@ -40,13 +40,23 @@ public class ContasTest extends BaseTest {
     @Test
     public void deveAlterarUmaContaComSucesso() {
         Contas account = new Contas();
-        account.setName("Testes2");
+        account.setName("Teste Conta alterada");
+
+        Integer idAccount =
+        given()
+            .header("Authorization", "JWT " + getTokenLogin())
+            .queryParam("nome", "Conta para alterar")
+        .when()
+            .get("/contas")
+        .then()
+            .statusCode(200)
+            .extract().path("id[0]");
 
         given()
             .header("Authorization", "JWT " + getTokenLogin())
             .body(account)
         .when()
-            .put("/contas/2244037")
+            .put("/contas/" + idAccount)
         .then()
             .statusCode(200)
             .body("id", is(notNullValue()))
@@ -57,7 +67,7 @@ public class ContasTest extends BaseTest {
     @Test
     public void naoDeveInserirContaComMesmoNome() {
         Contas account = new Contas();
-        account.setName("Testes");
+        account.setName("Conta mesmo nome");
 
         given()
             .header("Authorization", "JWT " + getTokenLogin())

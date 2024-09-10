@@ -16,14 +16,24 @@ public class MovimentacoesTest extends BaseTest {
         movimentacoes.setDescription("Movimentação Teste");
         movimentacoes.setInvolved("Interessado");
         movimentacoes.setValue(100.99f);
-        movimentacoes.setStatus(false);
-        movimentacoes.setAccountId(2244037);
+        movimentacoes.setStatus(true);
         return movimentacoes;
     }
 
     @Test
     public void deveIncluirUmaMovimentacaoComSucesso() {
+        Integer idAccount =
+        given()
+            .header("Authorization", "JWT " + getTokenLogin())
+            .queryParam("nome", "Conta para movimentacoes")
+        .when()
+            .get("/contas")
+        .then()
+            .statusCode(200)
+            .extract().path("id[0]");
+
         Movimentacoes movimentacoes = setMovimentacoes();
+        movimentacoes.setAccountId(idAccount);
 
         given()
             .header("Authorization", "JWT " + getTokenLogin())
@@ -75,5 +85,24 @@ public class MovimentacoesTest extends BaseTest {
         .then()
             .statusCode(400)
             .body("msg", hasItems("Data da Movimentação deve ser menor ou igual à data atual"));
+    }
+
+    @Test
+    public void deveRemoverMovimentacaoComSucesso() {
+        Integer id =
+        given()
+            .header("Authorization", "JWT " + getTokenLogin())
+        .when()
+            .get("/transacoes")
+        .then()
+            .statusCode(200)
+            .extract().path("find{it.descricao.contains('exclusao')}.id");
+
+        given()
+            .header("Authorization", "JWT " + getTokenLogin())
+        .when()
+            .delete("/transacoes/" + id)
+        .then()
+            .statusCode(204);
     }
 }
