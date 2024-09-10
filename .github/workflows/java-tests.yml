@@ -27,5 +27,17 @@ jobs:
         run: |
          sudo timedatectl set-timezone America/Sao_Paulo
 
-      - name: Build and test with Maven
-        run: mvn clean install
+      - name: Build and Run REST Assured Tests with Maven
+        run: mvn clean test
+
+      - name: Archive REST-Assured results
+        uses: actions/upload-artifact@v4
+        with:
+          name: REST-Assured-results
+          path: target/surefire-reports
+
+      - name: Upload REST-Assured results to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: REST-Assured-results
+          path: target/surefire-reports
