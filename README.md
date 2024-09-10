@@ -14,3 +14,5 @@ Na raiz do projeto, através de seu Prompt de Comando/Terminal/Console execute o
 ```bash
 mvn clean install
 ```
+
+*Também foi configurado GitHub Actions.

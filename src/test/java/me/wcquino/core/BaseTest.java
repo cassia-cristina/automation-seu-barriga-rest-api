@@ -3,8 +3,8 @@ package me.wcquino.core;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import org.aeonbits.owner.ConfigFactory;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,8 +38,8 @@ public class BaseTest {
             .extract().path("token");
     }
 
-    @AfterAll
-    public static void tearDown() {
+    @BeforeEach
+    public void resetData() {
         given()
             .header("Authorization", "JWT " + getTokenLogin())
         .when()
