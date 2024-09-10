@@ -23,5 +23,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Set Timezone
+        run: |
+         sudo timedatectl set-timezone America/Sao_Paulo
+
       - name: Build and test with Maven
         run: mvn clean install
