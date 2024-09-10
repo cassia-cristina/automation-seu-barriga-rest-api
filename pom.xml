@@ -83,6 +83,7 @@
                 <version>2.12.0</version>
                 <configuration>
                     <reportVersion>2.30.0</reportVersion>
+                    <resultsDirectory>target/allure-results</resultsDirectory>
                 </configuration>
             </plugin>
         </plugins>

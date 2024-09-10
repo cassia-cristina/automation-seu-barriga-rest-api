@@ -25,25 +25,28 @@ jobs:
 
       - name: Set Timezone
         run: |
-         sudo timedatectl set-timezone America/Sao_Paulo
+          sudo timedatectl set-timezone America/Sao_Paulo
 
       - name: Build and Run REST Assured Tests with Maven
         run: mvn clean test
 
-      - name: Get Allure history
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
+      - name: Generate Allure Report
+        run: mvn allure:report
 
-      - name: Allure Report action from marketplace
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
+      - name: Upload Allure Report Results
+        uses: actions/upload-artifact@v3
         with:
-          allure_results: allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
+          name: allure-results
+          path: target/allure-results
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: target/site/allure-maven/index.html
+
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          publish_dir: ./target/site/allure-maven
