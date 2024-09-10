@@ -39,14 +39,14 @@ jobs:
           name: allure-results
           path: target/allure-results
 
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
+      - name: Upload Allure Report Index
+        uses: actions/upload-artifact@v3
         with:
           name: allure-report
-          path: target/target/allure-results/index.html
+          path: target/site/allure-maven/index.html
 
       - name: Deploy Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
-          publish_dir: ./target/allure-results
+          publish_dir: ./target/site/allure-maven
