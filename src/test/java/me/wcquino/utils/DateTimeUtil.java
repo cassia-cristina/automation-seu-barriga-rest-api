@@ -1,20 +1,26 @@
 package me.wcquino.utils;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class DateTimeUtil {
+    private static final ZoneId ZONE_ID = ZoneId.of("America/Sao_Paulo");
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    private static String formatDate(LocalDateTime dateTime) {
+        ZonedDateTime zonedDate = dateTime.atZone(ZONE_ID);
+        return DATE_FORMATTER.format(zonedDate);
+    }
+
     public static String getCurrentDate() {
-        return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        LocalDateTime now = LocalDateTime.now();
+        return formatDate(now);
     }
 
     public static String getFutureDate() {
-        LocalDateTime today = LocalDateTime.now();
-        LocalDateTime futureDate = today.plusDays(1);
-
-        DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return formatterData.format(futureDate);
+        LocalDateTime futureDate = LocalDateTime.now().plusDays(1);
+        return formatDate(futureDate);
     }
 }
