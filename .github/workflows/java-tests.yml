@@ -49,4 +49,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
-          publish_dir: ./target/site/allure-maven
+          publish_dir: ./target/allure-results
