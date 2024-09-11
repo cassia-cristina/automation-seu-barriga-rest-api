@@ -22,7 +22,7 @@ public class MovimentacoesTest extends BaseTest {
 
     @Test
     public void deveIncluirUmaMovimentacaoComSucesso() {
-        Integer idAccount =
+        Integer  idAccount =
         given()
             .header("Authorization", "JWT " + getTokenLogin())
             .queryParam("nome", "Conta para movimentacoes")
