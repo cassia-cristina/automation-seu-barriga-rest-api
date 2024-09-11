@@ -16,7 +16,7 @@ before_script:
   - rm -rf ~/.m2/repository
 
 cache:
-  paths:a
+  paths:
     - .m2/repository
 
 build:
@@ -28,6 +28,8 @@ build:
     paths:
       - target/allure-results
       - target/site/allure-maven
+    reports:
+      junit: target/surefire-reports/*.xml
 
 report:
   stage: report
@@ -42,6 +44,8 @@ report:
     paths:
       - target/allure-results
       - target/site/allure-maven
+    reports:
+      junit: target/surefire-reports/*.xml
 
 pages:
   stage: pages
