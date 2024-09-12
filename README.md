@@ -5,11 +5,11 @@ Projeto final do curso Testando API Rest com REST-assured (com Wagner Costa);
 * JUnit 5
 * Lombok
 * Allure Report
+* Maven
 
 ##  Requisitos
 * Java 11+ JDK
 * Maven
-* Plugin Lombok
 
 ## Como executar a aplicação localmente:
 Na raiz do projeto, através de seu Prompt de Comando/Terminal/Console execute o comando:
