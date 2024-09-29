@@ -1,6 +1,8 @@
 # Projeto de Automação API Rest
 
-Projeto final do curso Testando API Rest com REST-assured (com Wagner Costa);
+Projeto final do curso Testando API Rest com REST-assured (com Wagner Costa):
+
+No curso usava-se JUnit4, mas adaptei o projeto final com JUnit5 e foram adicionados mais alguns recursos, como a geração de reports e o uso de lombok.
 * Rest Assured
 * JUnit 5
 * Lombok
@@ -17,14 +19,5 @@ Na raiz do projeto, através de seu Prompt de Comando/Terminal/Console execute o
 mvn clean install
 ```
 
-## Como executar a aplicação com Dockerfile e acessar Allure Report:
-```bash
-docker build -t my-maven-allure-project .
-```
-```bash
-docker run --name my-maven-allure-container -p 8080:8081 my-maven-allure-project
-```
-- Acesse http://localhost:8080/index.html
-
-* Também foi configurado GitHub Actions.
-* Acessar Report no GitHub: https://cassia-cristina.github.io/barriga-rest-api/
+* Também foi configurado GitHub Actions para executar os testes automaticamente;
+* Acessar Reports no GitHub Pages: https://cassia-cristina.github.io/barriga-rest-api/
