@@ -1,0 +1,40 @@
+<div>POST to http://barrigarest.wcaquino.me/transacoes</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;status&quot;: true,
+    &quot;tipo&quot;: &quot;REC&quot;,
+    &quot;data_transacao&quot;: &quot;30/09/2024&quot;,
+    &quot;data_pagamento&quot;: &quot;29/09/2024&quot;,
+    &quot;descricao&quot;: &quot;Movimentação Teste&quot;,
+    &quot;envolvido&quot;: &quot;Interessado&quot;,
+    &quot;valor&quot;: 100.99,
+    &quot;conta_id&quot;: null
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NTUwMzR9.iYxPcSz-YT6AIGHkiBib8BbC0Le0AS7eintJGpv_Zk0</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://barrigarest.wcaquino.me/transacoes&#39; -H &#39;Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NTUwMzR9.iYxPcSz-YT6AIGHkiBib8BbC0Le0AS7eintJGpv_Zk0&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;status&quot;: true,
+    &quot;tipo&quot;: &quot;REC&quot;,
+    &quot;data_transacao&quot;: &quot;30/09/2024&quot;,
+    &quot;data_pagamento&quot;: &quot;29/09/2024&quot;,
+    &quot;descricao&quot;: &quot;Movimentação Teste&quot;,
+    &quot;envolvido&quot;: &quot;Interessado&quot;,
+    &quot;valor&quot;: 100.99,
+    &quot;conta_id&quot;: null
+}&#39;
+    </div>
+
